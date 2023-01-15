@@ -1,3 +1,8 @@
+/*
+ * Compile this program with -fconcepts flag
+ *
+ *
+ * */
 #include <cstdio>
 #include <cstdlib>
 #include <cstddef>
@@ -29,6 +34,17 @@ T mean(const T* values, size_t length) {
 
 	return result / length;
 }
+
+/* Using static_assert to achieve the same functionality as Concepts
+ * template<typename T>
+ * T mean(const T* values, size_t length) {
+ *	static_assert(std::is_default_constructible<T>(), "Type must be deafult constructible");
+ *	static_assert(std::is_copy_constructible<T>(), "Type must be copy constructible");
+ *	static_assert(std::is_constructible<T, size_t>(), "Type must be constructible from size_t");	
+ *	...
+ * }
+ *
+ */
 
 
 int main() {
